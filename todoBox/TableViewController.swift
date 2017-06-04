@@ -75,6 +75,8 @@ class TableViewController: UITableViewController {
             // Delete the row from the data source
             items.remove(at: (indexPath as NSIndexPath).row)
             itemImageFile.remove(at: (indexPath as NSIndexPath).row)
+            itemSubIntro.remove(at: (indexPath as NSIndexPath).row)
+            datePicker.remove(at: (indexPath as NSIndexPath).row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -90,10 +92,16 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
         let itemToMove = items[(fromIndexPath as NSIndexPath).row]
         let itemImageToMove = itemImageFile[(fromIndexPath as NSIndexPath).row]
+        let itemSubToMove = itemSubIntro[(fromIndexPath as NSIndexPath).row]
+        let itemDatePickerToMove = datePicker[(fromIndexPath as NSIndexPath).row]
         items.remove(at: (fromIndexPath as NSIndexPath).row)
         itemImageFile.remove(at: (fromIndexPath as NSIndexPath).row)
+        itemSubIntro.remove(at: (fromIndexPath as NSIndexPath).row)
+        datePicker.remove(at: (fromIndexPath as NSIndexPath).row)
         items.insert(itemToMove, at: (to as NSIndexPath).row)
         itemImageFile.insert(itemImageToMove, at: (to as NSIndexPath).row)
+        itemSubIntro.insert(itemSubToMove, at: (to as NSIndexPath).row)
+        datePicker.insert(itemDatePickerToMove, at: (to as NSIndexPath).row)
     }
 
 

@@ -10,6 +10,10 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    let timeSelector: Selector = #selector(DetailViewController.updateTime)
+    let interval = 1.0
+    let count = 0
+    
     var receiveItem = ""
     var receiveSub = ""
     var receiveTime = ""
@@ -17,6 +21,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var lblAddItem: UILabel!
     @IBOutlet weak var lblAddSub: UILabel!
     @IBOutlet weak var lblAddDate: UILabel!
+    @IBOutlet weak var lblCurrenTime: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,10 @@ class DetailViewController: UIViewController {
         lblAddItem.text = receiveItem
         lblAddSub.text = receiveSub
         lblAddDate.text = receiveTime
+        
+        Timer.scheduledTimer(timeInterval: interval, target: self, selector: timeSelector, userInfo: nil, repeats: true)
+        
+        lblCurrenTime.textColor = .white
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +54,22 @@ class DetailViewController: UIViewController {
     func receiveTime(_ time: String)
     {
         receiveTime = time
+    }
+    
+    func updateTime() {
+        let date = NSDate()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        lblCurrenTime.text = formatter.string(from: date as Date)
+        
+        if(lblCurrenTime.text == lblAddDate.text)
+        {
+            let alarmAlert = UIAlertController(title: "알람", message: "설정하신 시간입니다", preferredStyle: UIAlertControllerStyle.alert)
+            let onAction = UIAlertAction(title: "알람 확인", style: UIAlertActionStyle.default, handler: nil)
+            alarmAlert.addAction(onAction)
+            present(alarmAlert, animated: true, completion: nil)
+        }
     }
     
 /*
