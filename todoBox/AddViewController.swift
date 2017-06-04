@@ -82,7 +82,7 @@ class AddViewController: UIViewController {
     @IBAction func datePIcker(_ sender: UIDatePicker) {
         let datePikcerView = sender
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm EEE"
         pickTime.text = formatter.string(from: datePikcerView.date)
     }
     
