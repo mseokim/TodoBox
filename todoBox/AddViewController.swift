@@ -52,8 +52,24 @@ class AddViewController: UIViewController {
     
     @IBAction func btnAddItem(_ sender: Any) {
         
-        if (pickTime.text == "시간을 선택해주세요") {
-           let dangerAlert = UIAlertController(title: "경고", message: "시간을 선택해주세요", preferredStyle: UIAlertControllerStyle.alert)
+        if (tfAddItem.text == "") {
+            let dangerAlert = UIAlertController(title: "경고", message: "할 일을 적어주세요", preferredStyle: UIAlertControllerStyle.alert)
+            let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
+            
+            dangerAlert.addAction(onAction)
+            present(dangerAlert, animated: true, completion: nil)
+        }
+        
+        else if (tfAddSub.text == "") {
+            let dangerAlert = UIAlertController(title: "경고", message: "설명을 적어주세요\n(설명이 없다면 띄어쓰기만 눌러주세요)", preferredStyle: UIAlertControllerStyle.alert)
+            let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
+            
+            dangerAlert.addAction(onAction)
+            present(dangerAlert, animated: true, completion: nil)
+        }
+        
+        else if (pickTime.text == "시간을 선택해주세요") {
+            let dangerAlert = UIAlertController(title: "경고", message: "시간을 선택해주세요\n(또는, 알람 스위치를 off해주세요)", preferredStyle: UIAlertControllerStyle.alert)
             let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
             
             dangerAlert.addAction(onAction)
