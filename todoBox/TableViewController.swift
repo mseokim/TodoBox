@@ -94,10 +94,12 @@ class TableViewController: UITableViewController {
         let itemImageToMove = itemImageFile[(fromIndexPath as NSIndexPath).row]
         let itemSubToMove = itemSubIntro[(fromIndexPath as NSIndexPath).row]
         let itemDatePickerToMove = datePicker[(fromIndexPath as NSIndexPath).row]
+        
         items.remove(at: (fromIndexPath as NSIndexPath).row)
         itemImageFile.remove(at: (fromIndexPath as NSIndexPath).row)
         itemSubIntro.remove(at: (fromIndexPath as NSIndexPath).row)
         datePicker.remove(at: (fromIndexPath as NSIndexPath).row)
+        
         items.insert(itemToMove, at: (to as NSIndexPath).row)
         itemImageFile.insert(itemImageToMove, at: (to as NSIndexPath).row)
         itemSubIntro.insert(itemSubToMove, at: (to as NSIndexPath).row)
@@ -124,6 +126,7 @@ class TableViewController: UITableViewController {
             let cell = sender as! UITableViewCell
             let indexPath = self.tvListView.indexPath(for:cell)
             let detailView = segue.destination as! DetailViewController
+            
             detailView.receiveItem(items[((indexPath as NSIndexPath?)?.row)!])
             detailView.receiveSub(itemSubIntro[((indexPath as NSIndexPath?)?.row)!])
             detailView.receiveTime(datePicker[((indexPath as NSIndexPath?)?.row)!])

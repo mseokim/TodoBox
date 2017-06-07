@@ -63,7 +63,7 @@ class DetailViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss EEE"
         lblCurrenTime.text = formatter.string(from: date as Date)
         
-        if(lblCurrenTime.text == lblAddDate.text)
+        if(lblAddItem == date)
         {
             let alarmAlert = UIAlertController(title: "알람", message: "설정하신 시간입니다", preferredStyle: UIAlertControllerStyle.alert)
             let onAction = UIAlertAction(title: "알람 확인", style: UIAlertActionStyle.default, handler: nil)

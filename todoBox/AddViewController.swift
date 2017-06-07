@@ -69,10 +69,12 @@ class AddViewController: UIViewController {
         }
         
         else if (pickTime.text == "시간을 선택해주세요") {
-            let dangerAlert = UIAlertController(title: "경고", message: "시간을 선택해주세요\n(또는, 알람 스위치를 off해주세요)", preferredStyle: UIAlertControllerStyle.alert)
+            let dangerAlert = UIAlertController(title: "경고", message: "시간을 선택해주세요\n(또는, Set Clock을 off해주세요)", preferredStyle: UIAlertControllerStyle.alert)
+            
             let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
             
             dangerAlert.addAction(onAction)
+            
             present(dangerAlert, animated: true, completion: nil)
         }
         
