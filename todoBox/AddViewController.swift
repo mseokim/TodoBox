@@ -23,6 +23,11 @@ class AddViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         pickTime.text = "시간을 선택해주세요"
+        pickTime.textColor = .white
+        
+        tfAddItem.placeholder = "할 일을 적어주세요"
+        
+        tfAddSub.placeholder = "설명을 적어주세요"
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +57,7 @@ class AddViewController: UIViewController {
     
     @IBAction func btnAddItem(_ sender: Any) {
         
-        if (tfAddItem.text == "") {
+        if (tfAddItem.text == "할 일을 적어주세요" || tfAddItem.text == "") {
             let dangerAlert = UIAlertController(title: "경고", message: "할 일을 적어주세요", preferredStyle: UIAlertControllerStyle.alert)
             let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
             
@@ -60,7 +65,7 @@ class AddViewController: UIViewController {
             present(dangerAlert, animated: true, completion: nil)
         }
         
-        else if (tfAddSub.text == "") {
+        else if (tfAddSub.text == "설명을 적어주세요" || tfAddSub.text == "") {
             let dangerAlert = UIAlertController(title: "경고", message: "설명을 적어주세요\n(설명이 없다면 띄어쓰기만 눌러주세요)", preferredStyle: UIAlertControllerStyle.alert)
             let onAction = UIAlertAction(title: "네, 알겠습니다", style: UIAlertActionStyle.default, handler: nil)
             
@@ -76,6 +81,7 @@ class AddViewController: UIViewController {
             dangerAlert.addAction(onAction)
             
             present(dangerAlert, animated: true, completion: nil)
+            
         }
         
         else {
@@ -103,6 +109,16 @@ class AddViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:00 EEE"
         pickTime.text = formatter.string(from: datePikcerView.date)
     }
+    
+    @IBAction func txtAddItem(_ sender: Any) {
+        tfAddItem.resignFirstResponder()
+    }
+    
+    @IBAction func txtAddSub(_ sender: Any) {
+        tfAddSub.resignFirstResponder()
+    }
+    
+    
     
     
     /*
